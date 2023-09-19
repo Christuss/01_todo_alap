@@ -10,8 +10,8 @@ class Megjelenit {
   }
 
   megjelenites() {
-    this.lista.forEach((elem) => {
-      new MegjelenitSor(elem, $(".table"));
+    this.lista.forEach((elem, index) => {
+      new MegjelenitSor(elem, $(".table"), index);
     });
 
 

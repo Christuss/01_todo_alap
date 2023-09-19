@@ -1,8 +1,10 @@
 class MegjelenitSor {
     #obj = {}
-    constructor(obj, szuloElem) {
+    constructor(obj, szuloElem, index) {
         this.#obj = obj
         this.szuloElem = szuloElem
+        this.index = index
+
         this.#sor()
         this.sorElem = this.szuloElem.children("tr:last-child");
         this.xElem = this.sorElem.children(".x");
@@ -10,16 +12,21 @@ class MegjelenitSor {
         this.keszElem = this.sorElem.children(".pipa");
         this.kukaElem = this.sorElem.children(".kuka");
 
-        this.keszElem.on('click', () => {
-            this.#esemenyTrigger("kesz");
+        if (this.#obj.kesz) {
             this.sorElem.css("background-color", "lightgreen");
             this.keszElem.css("display", "none");
             this.xElem.css("display", "inline");
+        }
+
+        this.keszElem.on('click', () => {
+            this.#esemenyTrigger("kesz");
+            
         })
         this.xElem.on('click', () => {
-            this.sorElem.css("background-color", "white");
-            this.xElem.css("display", "none");
-            this.keszElem.css("display", "inline");
+            this.#esemenyTrigger("megse");
+        })
+        this.kukaElem.on('click', () => {
+            this.#esemenyTrigger("torol");
         })
         
     }
@@ -34,7 +41,7 @@ class MegjelenitSor {
     }
 
     #esemenyTrigger(esemenyneve) {
-        const esemenyem = new CustomEvent(esemenyneve, {detail:this})
+        const esemenyem = new CustomEvent(esemenyneve, {detail:this.index})
         window.dispatchEvent(esemenyem);
     }
 
