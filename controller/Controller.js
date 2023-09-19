@@ -1,10 +1,12 @@
 import Model from "../model/Model.js";
 import Megjelenit from "../view/Megjelenit.js"
+import UrlapView from "../view/UrlapView.js";
 
 class Controller {
     constructor() {
         const SZULOELEM = $(".tarolo");
         const MODEL = new Model();
+        const URLAP = new UrlapView(SZULOELEM);
 
         new Megjelenit(MODEL.getList(), SZULOELEM);
 

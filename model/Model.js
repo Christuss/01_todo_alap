@@ -3,7 +3,7 @@ import { TODOLIST2 } from "./adatok.js";
 class Model {
     #list = []
     constructor() {
-        this.#list = TODOLIST2
+        this.#list = TODOLIST2;
     }
 
     //visszaadjuk a prog akt áll
